@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+//criando uma migration: "yarn prisma migrate dev"
+model User {
+  id String @default(uuid())
+  name String
+  email String
+  password String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+  
+  @@id ([id])
+  @@map("users") //descrevendo o nome da tabela
+}
+
+model Category {
+  id String @default(uuid())
+  name String 
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@id ([id])
+  @@map("categories") //descrevendo o nome da tabela
+  products Product[] //informando que a tabela pode conter vários items referiados a ela
+}
+
+model Product {
+  id String @default(uuid())
+  name String
+  price String
+  description String
+  banner String
+  category_id String
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  category Category @relation(fields: [category_id], references: [id]) //referenciando o campo para o nó da outra tabela
+
+  @@id ([id])
+  @@map("products") ///descrevendo o nome da tabela
+  items Item [] //informando que a tabela pode conter vários items referiados a ela
+}
+
+model Order {
+  id String @default(uuid())
+  table Int
+  status Boolean @default(false)
+  draft Boolean @default(true)
+  name String?
+  
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@id ([id])
+  @@map("orders") //descrevendo o nome da tabela
+  items Item [] //informando que a tabela pode conter vários items referiados a ela
+}
+
+model Item {
+  id String @default(uuid())
+  amount Int
+  
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  order_id String
+  product_id String
+
+  @@id ([id])
+  @@map("items") //descrevendo o nome da tabela
+  order Order @relation(fields: [order_id], references: [id])
+  product Product @relation(fields: [product_id], references: [id])
+}

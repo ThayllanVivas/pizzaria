@@ -1,0 +1,32 @@
+.container {
+    color: var(--white);
+
+    .title {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 1rem;
+    }
+
+    .containerItem {
+        margin: 1rem 0;
+        display: flex;
+        flex-direction: column;
+
+        strong {
+            color: var(--green-900);
+        }
+
+        .description {
+            padding: 3px 0 0 1.9rem;
+        }
+    }
+
+    #finishOrder {
+        background-color: rgba(#3FFFA3, 0.9);
+        color: var(--dark-900);
+        padding: 0.4rem 1rem;
+        border: 1px solid rgba(#3FFFA3, 0.5);
+        border-radius: 0.3rem;
+    }
+}

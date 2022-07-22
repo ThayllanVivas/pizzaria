@@ -1,0 +1,123 @@
+.container {
+    color: var(--white);
+    min-width: 300px;
+    max-width: 300px;
+    // height: 280px;
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 1rem;
+    }
+
+    .containerItem {
+        margin: 1rem 0;
+        display: flex;
+        flex-direction: column;
+
+        strong {
+            color: var(--green-900);
+        }
+
+        .description {
+            padding: 3px 0 0 1.9rem;
+        }
+
+        #itemTitle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            button {
+                border: 0;
+                background: transparent;
+
+                svg {
+                    font-size: 23px;
+                    color: var(--red-900);
+                }
+            }
+        }
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        
+        #finishOrder {
+            min-width: 49%;
+            background-color: rgba(#3FFFA3, 0.9);
+            color: var(--dark-900);
+            padding: 0.4rem 1rem;
+            border: 1px solid rgba(#3FFFA3, 0.5);
+            border-radius: 0.3rem;
+        }
+
+        #addProduct {
+            min-width: 49%;
+            background-color: rgba(#000, 0.9);
+            color: var(--white);
+            padding: 0.4rem 1rem;
+            border: 1px solid rgba(#000, 0.5);
+            border-radius: 0.3rem;
+        }
+    }
+
+    #form {
+        margin-top: 1rem;
+        border-top: 1px solid var(--gray-100);
+
+        select {
+            margin-top: 1rem;
+            background-color: var(--dark-900);
+            border: 0;
+            border-radius: 0.3rem;
+            width: 100%;
+            padding: 0.3rem;
+            color: var(--white);
+            margin-bottom: 0.4rem;
+
+            option {
+                text-align: center;
+            }
+        }
+
+        input {
+            background-color: var(--dark-900);
+            border: 0;
+            border-radius: 0.3rem;
+            width: 100%;
+            padding: 0.3rem;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 0.4rem;
+
+            &::placeholder {
+                color: var(--white);
+                // filter: brightness(0.8)
+            }
+        
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            #invisibleButton {
+                min-width: 50%;
+                background: transparent;
+                color: var(--white);
+                border: 0;
+            }
+
+            #submitButton {
+                min-width: 50%;
+                background-color: rgba(#3FFFA3, 0.9);
+                color: var(--dark-900);
+                padding: 0.4rem 1rem;
+                border: 1px solid rgba(#3FFFA3, 0.5);
+                border-radius: 0.3rem;
+            }
+        }
+    }
+}
